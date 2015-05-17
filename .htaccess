@@ -1,0 +1,9 @@
+<IfModule mod_rewrite.c>
+   RewriteEngine on
+   RewriteRule    ^vendors        -    [L]
+   RewriteRule    ^content        -    [L]
+   RewriteRule    ^$ app/webroot/    [L]
+   RewriteRule    (.*) app/webroot/$1 [L]
+</IfModule>
+setEnv  CAKE_ENV  development
+setEnv  DOMAIN_NAME conference
