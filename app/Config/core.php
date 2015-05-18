@@ -384,3 +384,9 @@ Cache::config('_cake_model_', array(
 	'serialize' => ($engine === 'File'),
 	'duration' => $duration
 ));
+
+Configure::write ("student.init_count", 2000);
+Configure::write ("teacher.init_count", 100);
+Configure::write ("max_age", 40);
+Configure::write ("min_age", 20);
+
