@@ -33,9 +33,12 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');
-	?>
-    <?php 
-    echo $this->Html->script('//www.google.com/jsapi');
+
+		echo $this->Html->css("//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css");
+		echo $this->Html->css("//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css");
+		
+		
+	    echo $this->Html->script('//www.google.com/jsapi');
     ?>
 <!--[if lt IE 9]>
     <?php echo $this->Html->script('//code.jquery.com/jquery-1.11.2.min.js'); ?>
@@ -43,6 +46,7 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 <!--[if (gte IE 9) | (!IE)]><!-->
     <?php echo $this->Html->script('//code.jquery.com/jquery-2.1.0.min.js'); ?>
 <!--<![endif]-->
+    <?php echo $this->Html->script ( "//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js" );?>
 </head>
 <body>
 	<div id="container">
@@ -51,6 +55,6 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			<?php echo $this->fetch('content'); ?>
 		</div>
 	</div>
-	<?php echo $this->element('sql_dump'); ?>
+	<?php //echo $this->element('sql_dump'); ?>
 </body>
 </html>

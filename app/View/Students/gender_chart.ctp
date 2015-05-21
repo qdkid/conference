@@ -1,4 +1,4 @@
-<h1>Student Age/Gender Distribution</h1>
+<h1>Student Age/Gender Pie Chart</h1>
 <script type="text/javascript">
 	google.load("visualization", "1.1", {packages:["table"]});
 	google.load('visualization', '1.1', {packages: ['controls']});
@@ -60,15 +60,37 @@
         var display = new google.visualization.DataView (data);
         display.hideColumns([0]);
         var table = new google.visualization.Table(document.getElementById('table_div'));
-        table.draw(display, {'showRowNumber': true });
+        table.draw(display, {'showRowNumber': true,'page':'enable','pageSize': 25  });
       }
 </script>
+<div role="tabpanel">
+	<ul class="nav nav-tabs" role="tablist" id="dashboardTab">
+		<li role="presentation" class="active"><a href="#home"
+			aria-controls="home" role="tab" data-toggle="tab">Chart</a></li>
+		<li role="presentation"><a href="#data" role="tab" data-toggle="tab">Data</a></li>
+	</ul>
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane active" id="home">
+			<div id="dashboard_div">
+			<table><tr><td>
+				<!--Divs that will hold each control and chart-->
+				<div id="control1" style="width: 250px"></div>
+				<div id="control2" style="width: 250px"></div>
+				</td><td>
+				<div id="chart_div"></div>
+				</td></tr>
+			</table>
+			</div>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="data">
+			<div id="table_div"></div>
+		</div>
 
-<div id="dashboard_div">
-	<!--Divs that will hold each control and chart-->
-	<div id="control1"></div>
-	<div id="control2"></div>
-	<div id="chart_div"></div>
-	<div id="table_div"></div>
+	</div>
+
 </div>
+
+
+
 
