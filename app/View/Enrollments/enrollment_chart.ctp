@@ -10,24 +10,28 @@
 		<div role="tabpanel" class="tab-pane active" id="home">
 			<p>&nbsp;</p>
 			<div id="dashboard_div">
-			<table><tr><td>
+				<table>
+					<tr>
+						<td>
 								<?php
-		echo $this->Form->input ( 'term', array (
-				'empty' => "-- Choose Term --",
-				'options' => $terms,
-				'id' => 'term_dropdown' 
-		) );
-		?>
+								echo $this->Form->input ( 'term', array (
+										'empty' => "-- Choose Term --",
+										'options' => $terms,
+										'id' => 'term_dropdown' 
+								) );
+								?>
 				<!--Divs that will hold each control and chart-->
-				<div id="control1" style="width: 250px"></div>
-				<div id="control2" style="width: 250px"></div>
-				<div id="control3" style="width: 250px"></div>
-				<div id="control4" style="width: 250px"></div>
-				</td><td>
-				<div id="chart_div"></div>
-				</td></tr>
+							<div id="control1" style="width: 250px"></div>
+							<div id="control2" style="width: 250px"></div>
+							<div id="control3" style="width: 250px"></div>
+							<div id="control4" style="width: 250px"></div>
+						</td>
+						<td>
+							<div id="chart_div"></div>
+						</td>
+					</tr>
 				</table>
-				
+
 			</div>
 		</div>
 		<div role="tabpanel" class="tab-pane" id="data">
@@ -213,7 +217,7 @@
       function refresh_chart(term_id) {
        		$.ajax({
     			url : '<?php
-echo $this->Html->url ( array (
+							echo $this->Html->url ( array (
 									"controller" => "Enrollments",
 									"action" => "getEnrollments",
 									"json" 
