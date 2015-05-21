@@ -42,6 +42,13 @@
     function drawChart(response) {
         var data = new google.visualization.DataTable(response);
         var dt_rows = data.getNumberOfRows();
+    	var formatter = new google.visualization.NumberFormat({
+    		suffix : '%',
+    		fractionDigits : 0
+    	});
+
+    	formatter.format(data, 7);
+    	formatter.format(data, 8);
         
         // Create a category filter, passing some options
         var categoryPicker1 = new google.visualization.ControlWrapper({
@@ -206,7 +213,6 @@
       function refresh_chart(term_id) {
        		$.ajax({
     			url : '<?php
-							
 echo $this->Html->url ( array (
 									"controller" => "Enrollments",
 									"action" => "getEnrollments",
