@@ -74,6 +74,7 @@ class Option extends AppModel {
 						"Option.group_name like " => 'first_name%' 
 				) 
 		) );
+		
 		shuffle ( $firstnames );
 		$f_count = count ( $firstnames );
 		
@@ -83,7 +84,7 @@ class Option extends AppModel {
 		$end = strtotime ( (date ( "Y" )   - configure::read("min_age")) . "-01-01" );
 		
 		while ( $i < $count ) {
-			$firstname = $firstnames [$i % $f_count];
+			$firstname = $firstnames [mt_rand(0, $f_count-1)];
 			
 			$name = array (
 					"first_name" => $firstname ['Option'] ['name'],

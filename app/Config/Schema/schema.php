@@ -1628,6 +1628,11 @@ class AppSchema extends CakeSchema {
 					'type' => 'biginteger',
 					'null' => false 
 			),
+			'final_grade' => array (
+					'type' => 'float',
+					'null' => true,
+					'default' => null
+			),
 			'status' => array (
 					'type' => 'string',
 					'length' => '25',

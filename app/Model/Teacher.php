@@ -6,10 +6,8 @@ class Teacher extends AppModel {
 			'gender' => 'notEmpty' 
 	);
 	public $belongsTo = array (
-			'Enrollment' 
 	);
 	public $hasMany = array (
-			'Enrollment' 
 	);
 	public function __construct($id = false, $table = null, $ds = null) {
 		parent::__construct ( $id, $table, $ds );

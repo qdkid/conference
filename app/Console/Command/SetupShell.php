@@ -73,9 +73,15 @@ class SetupShell extends AppShell {
 			shuffle ( $status );
 			
 			for($i = 0; $i < $max_seats; $i ++) {
+				$final_grade = null;
+				if ($status[$i] == 'active') {
+					$rand = mt_rand(0,5);
+					$final_grade = $rand >1 ? mt_rand (60, 100) : mt_rand(0,100);
+				}
 				$enrollments [] = array (
 						"class_schedule_id" => $class ['ClassSchedule'] ['id'],
 						"student_id" => $student_ids [$i],
+						'final_grade' => $final_grade,
 						"status" => $status [$i] 
 				);
 			}
