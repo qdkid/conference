@@ -34,7 +34,8 @@
             'width': 600,
             'height': 600,
             'pieSliceText': 'value',
-            'legend': 'right'
+            'legend': 'right',
+            'is3D': true
           },
         'view': {'columns':[0,3]}
         });
