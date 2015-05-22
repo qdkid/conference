@@ -21,10 +21,10 @@
 								) );
 								?>
 				<!--Divs that will hold each control and chart-->
-							<div id="control1" style="width: 250px"></div>
-							<div id="control2" style="width: 250px"></div>
-							<div id="control3" style="width: 250px"></div>
-							<div id="control4" style="width: 250px"></div>
+							<div id="course_code_control" style="width: 250px"></div>
+							<div id="teacher_control" style="width: 250px"></div>
+							<div id="reg_ratio_control" style="width: 250px"></div>
+							<div id="drop_ratio_control" style="width: 250px"></div>
 						</td>
 						<td>
 							<div id="chart_div"></div>
@@ -55,25 +55,25 @@
     	formatter.format(data, 8);
         
         // Create a category filter, passing some options
-        var categoryPicker1 = new google.visualization.ControlWrapper({
+        var course_code_picker = new google.visualization.ControlWrapper({
           'controlType' : 'CategoryFilter',
-          'containerId': 'control1',
+          'containerId': 'course_code_control',
           'options': {
             'filterColumnLabel': 'Course Code'
           }
         });
 
-        var categoryPicker2 = new google.visualization.ControlWrapper({
+        var teacher_picker = new google.visualization.ControlWrapper({
             'controlType' : 'CategoryFilter',
-            'containerId': 'control2',
+            'containerId': 'teacher_control',
             'options': {
               'filterColumnLabel': 'Teacher'
             }
           });
         
-      	var categoryPicker3 = new google.visualization.ControlWrapper({
+      	var reg_ratio_picker = new google.visualization.ControlWrapper({
     		'controlType' : 'NumberRangeFilter',
-    		'containerId' : 'control3',
+    		'containerId' : 'reg_ratio_control',
     		'options' : {
     			'filterColumnLabel' : 'Reg Ratio',
      			'ui' : {
@@ -87,9 +87,9 @@
     	});
 
  
-    	var categoryPicker4 = new google.visualization.ControlWrapper({
+    	var drop_ratio_picker = new google.visualization.ControlWrapper({
     		'controlType' : 'NumberRangeFilter',
-    		'containerId' : 'control4',
+    		'containerId' : 'drop_ratio_control',
     		'options' : {
     			'filterColumnLabel' : 'Drop Ratio',
     			'ui' : {
@@ -190,7 +190,7 @@
 
         //add event handler to draw table
     	google.visualization.events.addListener(combo, 'ready', function() {
-    		draw_table(combo.getDataTable());
+    		drawTable(combo.getDataTable());
     	});
 
         // Create a dashboard.
@@ -198,23 +198,23 @@
             document.getElementById('dashboard_div'));
     	
         // Establish dependencies
-        dashboard.bind(categoryPicker1, [categoryPicker2,categoryPicker3, categoryPicker4]);
-        dashboard.bind(categoryPicker2, [categoryPicker3, categoryPicker4]);
-        dashboard.bind(categoryPicker3, categoryPicker4);
-        dashboard.bind([categoryPicker1, categoryPicker2,categoryPicker3, categoryPicker4], combo);
+        dashboard.bind(course_code_picker, [teacher_picker,reg_ratio_picker, drop_ratio_picker]);
+        dashboard.bind(teacher_picker, [reg_ratio_picker, drop_ratio_picker]);
+        dashboard.bind(reg_ratio_picker, drop_ratio_picker);
+        dashboard.bind([course_code_picker, teacher_picker,reg_ratio_picker, drop_ratio_picker], combo);
 
         // Draw the dashboard.
         dashboard.draw(data);
       }
 
-      function draw_table (data) {
+      function drawTable (data) {
         var display = new google.visualization.DataView (data);
         display.hideColumns([0]);
         var table = new google.visualization.Table(document.getElementById('table_div'));
         table.draw(display, {'showRowNumber': true,'page':'enable','pageSize': 25 });
       }
 
-      function refresh_chart(term_id) {
+      function refreshChart(term_id) {
        		$.ajax({
     			url : '<?php
 							echo $this->Html->url ( array (
@@ -239,7 +239,7 @@
     		});
     	}
   	$('#term_dropdown').on ('change', function (){
-		refresh_chart($('#term_dropdown').val());
+		refreshChart($('#term_dropdown').val());
   	  	});
 </script>
 

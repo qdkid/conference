@@ -9,17 +9,17 @@
         var dt_rows = data.getNumberOfRows();
         
         // Create a category filter, passing some options
-        var categoryPicker1 = new google.visualization.ControlWrapper({
+        var gender_picker = new google.visualization.ControlWrapper({
           'controlType' : 'CategoryFilter',
-          'containerId': 'control1',
+          'containerId': 'gender_control',
           'options': {
             'filterColumnLabel': 'Gender'
           }
         });
 
-        var categoryPicker2 = new google.visualization.ControlWrapper({
+        var age_picker = new google.visualization.ControlWrapper({
             'controlType' : 'CategoryFilter',
-            'containerId': 'control2',
+            'containerId': 'age_control',
             'options': {
               'filterColumnLabel': 'Age Range'
             }
@@ -41,7 +41,7 @@
 
         //add event handler to draw table
     	google.visualization.events.addListener(combo, 'ready', function() {
-    		draw_table(combo.getDataTable());
+    		drawTable(combo.getDataTable());
     	});
 
         // Create a dashboard.
@@ -49,14 +49,14 @@
             document.getElementById('dashboard_div'));
     	
         // Establish dependencies
-        dashboard.bind(categoryPicker1, categoryPicker2);
-        dashboard.bind([categoryPicker1, categoryPicker2], combo);
+        dashboard.bind(gender_picker, age_picker);
+        dashboard.bind([gender_picker, age_picker], combo);
 
         // Draw the dashboard.
         dashboard.draw(data);
       }
 
-      function draw_table (data) {
+      function drawTable (data) {
         var display = new google.visualization.DataView (data);
         display.hideColumns([0]);
         var table = new google.visualization.Table(document.getElementById('table_div'));
@@ -75,8 +75,8 @@
 			<div id="dashboard_div">
 			<table><tr><td>
 				<!--Divs that will hold each control and chart-->
-				<div id="control1" style="width: 250px"></div>
-				<div id="control2" style="width: 250px"></div>
+				<div id="gender_control" style="width: 250px"></div>
+				<div id="age_control" style="width: 250px"></div>
 				</td><td>
 				<div id="chart_div"></div>
 				</td></tr>
